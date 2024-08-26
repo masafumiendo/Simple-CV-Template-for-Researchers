@@ -1,0 +1,86 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{multicol}
+\usepackage[letterpaper, total={7in, 9.5in}]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xifthen}
+\usepackage{fontawesome5}
+\usepackage{tabularx}
+
+% Header spacing settinngs
+\newlength{\headerspacing}
+\setlength{\headerspacing}{-1.5\baselineskip}
+
+\usepackage{fontspec}
+\setmainfont{Source Sans Pro}[
+    UprightFont={*-Regular},
+    BoldFont={*-SemiBold},
+    ItalicFont={*-Italic},
+    BoldItalicFont={*-SemiBoldItalic}
+]
+\usepackage{url}
+\usepackage[unicode,pdfencoding=auto]{hyperref}
+
+% Page Style Settings
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{Your Name, Page \thepage \hspace{1pt} of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+
+% Customize Section Styles
+\titleformat{\section}
+  {\normalfont\Large\bfseries}
+  {}{0em}
+  {}[\titlerule]
+\titlespacing*{\section}{0pt}{*1.5}{*1.0}
+
+% Bullet Point Setup
+\setlist[itemize]{leftmargin=*,parsep=0pt,itemsep=2pt,topsep=2pt,partopsep=0pt}
+\setlist[enumerate]{leftmargin=*,parsep=0pt,itemsep=2pt,topsep=2pt,partopsep=0pt}
+
+% Custom commands for consistent formatting
+\newcommand{\cvitem}[2]{%
+  \textbf{#1}\\
+  #2\par
+  \vspace{0.5ex}
+}
+
+\newcommand{\cvsection}[1]{%
+  \section*{\textbf{\Large#1}}
+}
+
+% Commands for research items
+\newcommand{\researchitem}[5]{%
+  \textbf{#1} \hfill #2\\
+  #3
+  \begin{itemize}
+    #4
+  \end{itemize}
+  \vspace{0.5ex}
+}
+
+
+\newcommand{\researchtitle}[3][]{%
+  \ifthenelse{\equal{#1}{}}
+    {#2}
+    {\href{#1}{#2}}%
+  \ifthenelse{\equal{#3}{}}{}{, #3}%
+}
+
+% Commands for Award/Fellowship Items
+\newcommand{\awarditem}[3]{%
+  \textbf{#1} \hfill #2\\
+  #3\par
+  \vspace{0.5ex}
+}
+
+% Commands for Publication Formats
+\newcommand{\publication}[6][]{%
+  \item \researchtitle[#1]{#2}{#3}\\
+  #4, \textit{#5}, #6.
+}
+
+\parindent = 0pt
